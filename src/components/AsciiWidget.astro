@@ -1,0 +1,15 @@
+---
+interface Props {
+  style?: 'single' | 'double' | 'rounded' | 'dashed';
+  id?: string;
+  class?: string;
+  joinGroup?: string;
+  join?: boolean;
+  padX?: number;
+  padY?: number;
+}
+const { style = 'single', id, class: className, joinGroup, join, padX, padY } = Astro.props;
+---
+<div class:list={['ascii-widget', className]} id={id} data-box-style={style} data-join-group={joinGroup} data-join={join ? 'true' : undefined} data-pad-x={padX} data-pad-y={padY}>
+<slot />
+</div>

@@ -1,0 +1,28 @@
+---
+const albums = [
+  { cover: "/assets/am-1.png", title: "Whatever People Say I Am, That's What I'm Not", size: "97,6 MiB", link: "https://files.catbox.moe/3uxqv4.gz" },
+  { cover: "/assets/am-2.png", title: "Favorite Worst Nightmare", size: "89,7 MiB", link: "https://files.catbox.moe/6r6m5a.gz" },
+  { cover: "/assets/am-3.png", title: "Humbug", size: "95,6 MiB", link: "https://files.catbox.moe/8lvyjw.gz" },
+  { cover: "/assets/am-4.png", title: "AM", size: "96,6 MiB", link: "https://files.catbox.moe/3jwk5f.gz" },
+  { cover: "/assets/am-5.png", title: "Suck It and See", size: "91,6 MiB", link: "https://files.catbox.moe/32u39l.gz" },
+  { cover: "/assets/am-6.png", title: "Tranquility Base Hotel + Casino", size: "101,0 MiB", link: "https://files.catbox.moe/oz4crm.gz" },
+  { cover: "/assets/am-7.png", title: "The Car", size: "91,4 MiB", link: "https://files.catbox.moe/f1ly7t.gz" }
+];
+---
+<div class="table-container">
+    <table class="retro-table">
+        <thead>
+            <tr><th style="width: 60px;">cover</th><th>album</th><th>size</th><th>link</th></tr>
+        </thead>
+        <tbody>
+            {albums.map(album => (
+                <tr>
+                    <td><img src={album.cover} alt={album.title} /></td>
+                    <td>{album.title}</td>
+                    <td>{album.size}</td>
+                    <td><a href={album.link} target="_blank">[download]</a></td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</div>

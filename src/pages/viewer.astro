@@ -1,0 +1,32 @@
+---
+import '../styles/yourworld.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWOT Map Viewer</title>
+    <style>
+        #topbar { background-color: #E5E5FF; border-bottom: 1px solid #ccc; height: 28px; display: flex; align-items: center; font-family: Verdana, Arial, sans-serif; font-size: 12px; color: #333; z-index: 100; user-select: none; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        #topbar_inner { width: 100%; display: flex; justify-content: space-between; padding: 0 10px; }
+        .hud-group { display: flex; gap: 20px; align-items: center; }
+        .highlight { font-weight: bold; color: #000; }
+        .data-tag { background: #fff; border: 1px solid #ccc; padding: 2px 6px; border-radius: 3px; font-family: "Courier New", Courier, monospace;}
+        #owot { background-color: #ddd; cursor: grab; }
+        #owot:active { cursor: grabbing; }
+    </style>
+</head>
+<body>
+    <div id="topbar">
+        <div id="topbar_inner">
+            <div class="hud-group"><span style="font-weight: bold; color: blue;">owot map view thing by nano</span><span id="coord_display">[X: 0, Y: 0]</span></div>
+            <div class="hud-group" id="metadata_display">Hover over the map to view tile metadata</div>
+        </div>
+    </div>
+    <div id="main_view" style="width: 100vw; height: calc(100vh - 28px); margin-top: 28px;">
+        <canvas id="owot" class="screen_canvas"></canvas>
+    </div>
+    <script src="../scripts/viewer.js"></script>
+</body>
+</html>

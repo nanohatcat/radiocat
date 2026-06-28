@@ -1,0 +1,16 @@
+---
+const people = [
+  { name: "ala", src: "/assets/ala.png" },
+  { name: "rals", src: "/assets/rals.png" },
+  { name: "jvl", src: "/assets/jvl.png" }
+];
+---
+<div class="cool-people-container">
+    <div class="cool-people-title">cool people</div>
+    <div class="cool-marquee">
+        <div class="cool-track">
+            {people.map(p => ( <div class="cool-person"><img src={p.src} alt={p.name} /><span>{p.name}</span></div> ))}
+            {people.map(p => ( <div class="cool-person"><img src={p.src} alt={p.name} /><span>{p.name}</span></div> ))}
+        </div>
+    </div>
+</div>
