@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AsciiWidget from '../components/AsciiWidget.astro';
+import CoolPeople from '../components/CoolPeople.astro';
+import MusicTable from '../components/MusicTable.astro';
+
+const blogPosts = [
+  { title: "website revamp 4", date: "2026-06-24 2:17 pm ast", style: "double" as const, content: "everblush colorscheme lolololol\nalso website looks prettier now" },
+  { title: "website revamp 3", date: "2026-06-19 4:25 pm gmt -4", style: "single" as const, content: "another switch to catppuccin mocha/latte." },
+  { title: "website revamp 2", date: "2026-06-15 1:06 pm gmt -4", style: "single" as const, content: "i switched the breeze dark colorscheme to gruvbox dark medium." },
+  { title: "website revamp", date: "2026-06-13 8:06 pm gmt -4", style: "single" as const, content: "i'm really sorry for not updating anything in the website since may, i really didn't have anything to do other than script in ywot, hence why i didn't.\n\ni'll port the old md pages to this ascii boxes like ui, and definetly keep this ui." }
+];
+---
+<BaseLayout title="radiocat.lol">
+    <header>
+        <pre class="ascii-logo">
+                                             ▄▄       ▄▄
+               █▄                      █▄     ██       ██
+ ▄             ██ ▀▀                  ▄██▄    ██       ██
+ ████▄▄▀▀█▄ ▄████ ██ ▄███▄ ▄███▀ ▄▀▀█▄ ██     ██ ▄███▄ ██
+ ██   ▄█▀██ ██ ██ ██ ██ ██ ██    ▄█▀██ ██     ██ ██ ██ ██
+▄█▀  ▄▀█▄██▄█▀███▄██▄▀███▀▄▀███▄▄▀█▄██▄██ ██ ▄██▄▀███▀▄██
+        </pre>
+        <div class="header-text">a.k.a nano's hideout</div>
+        <AsciiWidget style="double" id="theme-btn" class="dynamic-toggle">switch to light mode</AsciiWidget>
+        <div class="topbar-wrapper">
+            <nav id="topbar" class="ascii-widget" data-box-style="rounded">
+                <a href="#home">home</a>   ·   <a href="#blogs">blogs</a>   ·   <a href="#atabook">atabook</a>   ·   <a href="#music">music</a>   ·   <a href="#owot">owot</a>   ·   <a href="#etcetera">etcetera</a> · <a href="https://cinder.radiocat.lol">cinder's website</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="layout">
+        <div id="tab-home" class="tab-section active-tab">
+            <main class="posts">
+                <AsciiWidget style="double">
+                    welcome to radiocat.lol
+                    ---
+                    im nano  hdasduhasihsaisudhizxuchzuxhczx
+                    im a programmer i program stuff
+                    owot and ywot chud
+                    ---
+                    (that was a mashed resume!!!)
+                    I'm nanohatcat/Caine, or just Nano. I am 15 years old, born in Brazil at December 8, 2010, 12:03 AM GMT -4.
+                    I make fairly cool websites and sideprojects, but I script on OWOT for fun.
+                    Check the links below for different pages!
+                </AsciiWidget>
+                <CoolPeople />
+            </main>
+        </div>
+
+        <div id="tab-blogs" class="tab-section">
+            <main class="posts">
+                {blogPosts.map(post => (
+                    <AsciiWidget style={post.style}>
+{post.title}
+{post.date}
+---
+{post.content}
+                    </AsciiWidget>
+                ))}
+            </main>
+        </div>
+
+        <div id="tab-atabook" class="tab-section">
+            <div class="iframe-container">
+                <iframe src="https://nanohatcat.atabook.org"></iframe>
+            </div>
+        </div>
+
+        <div id="tab-music" class="tab-section">
+            <main class="posts">
+                <AsciiWidget style="double">
+                    music downloads
+                    ---
+                    arctic monkeys
+                </AsciiWidget>
+                <MusicTable />
+            </main>
+        </div>
+
+        <div id="tab-owot" class="tab-section">
+            <main class="posts">
+                <AsciiWidget style="double">
+                    owot renderer
+                    ---
+                    paste your websocket tile payload directly inside the window below to render the canvas
+                </AsciiWidget>
+                <div class="owot-container">
+                    <div class="owot-sidebar">
+                        <textarea id="owot-json" placeholder="paste tile WS fetch here"></textarea>
+                        <input type="file" id="owot-file-input" accept=".json" style="display: none;">
+                        <div class="owot-row">
+                            <button id="owot-upload-btn">upload json</button>
+                            <button id="owot-render-btn">render visual</button>
+                            <button id="owot-download-btn">download png</button>
+                        </div>
+                        <div class="owot-row" style="margin-top: 10px;">
+                            <button id="owot-viewer-btn" style="border-color: var(--accent-hover);">open interactive viewer</button>
+                        </div>
+                    </div>
+                    <div class="owot-preview">
+                        <div class="owot-canvas-wrapper"><canvas id="owot-canvas"></canvas></div>
+                        <div id="owot-meta" class="owot-meta-text">no visual parsed yet, paste WS fetch and click render</div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div id="tab-etcetera" class="tab-section">
+            <aside class="sidebar">
+                <AsciiWidget style="double">
+other stuff
+---
+> <a href="https://yourworldoftext.com/~ywot.nano" target="_blank">my ywot world</a>
+> <a href="https://github.com/nanohatcat" target="_blank">my github</a>
+                </AsciiWidget>
+            </aside>
+        </div>
+    </div>
+</BaseLayout>
